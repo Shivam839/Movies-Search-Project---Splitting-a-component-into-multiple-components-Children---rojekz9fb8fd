@@ -6,9 +6,25 @@ const App = () => {
     const [inputValue, setInputValue] = useState("");
     const [results, setResult] = useState(null);
 
-    function handleClick(e) {}
+    function handleClick(e) {
+			e.preventDefault();
+			let finalResult = [];
+			for(let movie of movies){
+				if(movie.title.toLowerCase() == inputValue.toLowerCase()){
+					/* push a object in the array 
+						object properties -> id, title
+					*/
+					finalResult.push(movie.title)
+				}
+			}
+			setResult(finalResult);
+			setInputValue("")
 
-    function handleChange(e) {}
+		}
+
+    function handleChange(e) {
+			setInputValue(e.target.value)
+		}
 
     return (
         <div id="main">
@@ -31,6 +47,11 @@ const App = () => {
             </div>
         </div>
     );
+    // controlled components and uncontrolled components?
+    /* 
+			if the state is handled by react end to end that is called as controlled component											
+    
+    */
 };
 
 export default App;
